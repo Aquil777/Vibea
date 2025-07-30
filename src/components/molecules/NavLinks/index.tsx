@@ -5,6 +5,12 @@ import { useRouter } from 'next/router'
 
 import { links } from 'utils/links'
 
+type NavLinkProps = {
+  href: string
+  active: boolean
+  children: React.ReactNode
+}
+
 const NavLinks = (): JSX.Element => {
   const { asPath } = useRouter()
 
@@ -24,7 +30,7 @@ const NavLinks = (): JSX.Element => {
             textTransform="uppercase"
           >
             <NavLink href={link.url} active={asPath === link.url}>
-              <span>{link.text}</span>
+              {link.text}
             </NavLink>
           </Box>
         ))}
@@ -33,18 +39,12 @@ const NavLinks = (): JSX.Element => {
   )
 }
 
-const NavLink: React.FC<{ href: string; active: boolean }> = ({
-  href,
-  active,
-  children,
-}): JSX.Element => {
-  const child = React.Children.only(children)
-
+const NavLink: React.FC<NavLinkProps> = ({ href, active, children }) => {
   return (
     <Link href={href} passHref>
-      {React.cloneElement(child as React.ReactElement, {
-        'aria-current': active ? 'page' : null,
-      })}
+      <Box as="a" aria-current={active ? 'page' : undefined}>
+        {children}
+      </Box>
     </Link>
   )
 }
