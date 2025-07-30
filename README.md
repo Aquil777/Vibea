@@ -1,6 +1,4 @@
-# Frontend Mentor - Audiophile e-commerce website solution
-
-This is a solution to the [Audiophile e-commerce website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+# Frontend Mentor - Vibea e-commerce website solution
 
 ## Table of contents
 
@@ -39,7 +37,7 @@ Users should be able to:
 
 ### Links
 
-[Live Site URL](https://audiophile-ecommerce-mbart13.vercel.app/)
+[Live Site URL](https://Vibea-ecommerce-mbart13.vercel.app/)
 
 ### Setup
 
@@ -206,5 +204,6 @@ Create unit and integration tests with Jest/React-Testing-Library.
 ## Author
 
 - Frontend Mentor - [@mbart13](https://www.frontendmentor.io/profile/mbart13)
-#   V i b e a  
+#   V i b e a 
+ 
  
