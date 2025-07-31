@@ -6,12 +6,12 @@ const Logo = (): JSX.Element => {
   return (
     <Box mr={{ sm: 'auto', lg: 0 }} lineHeight="0">
       <Link href="/">
-          <Image
-            src="/images/shared/desktop/logo.svg"
-            height={25}
-            width={144}
-            alt="Vibea logo - Home"
-          />
+        <Image
+          src="/images/shared/desktop/logo.svg"
+          height={25}
+          width={144}
+          alt="Vibea logo - Home"
+        />
       </Link>
     </Box>
   )

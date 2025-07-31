@@ -1,14 +1,24 @@
-import { Box, Center, useRadio, UseRadioProps } from '@chakra-ui/react'
+import { Box, Center, useCheckbox, UseCheckboxProps } from '@chakra-ui/react'
+import { ReactNode } from 'react'
 
-const Radio: React.FC<UseRadioProps> = (props): JSX.Element => {
-  const { getInputProps, getCheckboxProps } = useRadio(props)
+type CheckboxProps = UseCheckboxProps & {
+  children: ReactNode
+}
+
+const Checkbox: React.FC<CheckboxProps> = props => {
+  const { children, ...checkboxProps } = props
+
+  const { getInputProps, getCheckboxProps, getLabelProps } =
+    useCheckbox(checkboxProps)
 
   const input = getInputProps()
   const checkbox = getCheckboxProps()
+  const label = getLabelProps()
 
   return (
     <Box
       as="label"
+      {...label}
       border="1px solid"
       borderColor="inputBorder"
       py="1rem"
@@ -36,7 +46,7 @@ const Radio: React.FC<UseRadioProps> = (props): JSX.Element => {
         height="20px"
         border="1px solid"
         borderColor="inputBorder"
-        borderRadius="50%"
+        borderRadius="0.5rem" // quadrado, muda para "50%" para círculo
         position="absolute"
         left="1rem"
         _after={{
@@ -45,14 +55,14 @@ const Radio: React.FC<UseRadioProps> = (props): JSX.Element => {
           bg: 'accent',
           width: '10px',
           height: '10px',
-          borderRadius: '50%',
+          borderRadius: '0.5rem',
           transform: 'scale(0)',
           transition: 'transform 0.3s linear',
         }}
-      ></Center>
-      {props.children}
+      />
+      {children}
     </Box>
   )
 }
 
-export default Radio
+export default Checkbox

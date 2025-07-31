@@ -1,6 +1,11 @@
 import { Box } from '@chakra-ui/react'
+import { ReactNode } from 'react'
 
-const FormLegend: React.FC = ({ children }): JSX.Element => {
+type FormLegendProps = {
+  children: ReactNode
+}
+
+const FormLegend: React.FC<FormLegendProps> = ({ children }) => {
   return (
     <Box
       as="legend"

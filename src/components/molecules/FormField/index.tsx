@@ -1,51 +1,47 @@
 import { forwardRef } from 'react'
-import { Box, Input, Text, Flex } from '@chakra-ui/react'
+import {
+  Box,
+  Input,
+  InputProps,
+  Text,
+  Flex,
+  ResponsiveValue,
+} from '@chakra-ui/react'
 
 type FormFieldProps = {
   label: string
-  placeholder: string
-  type?: string
-  gridArea?: { [key: string]: string }
-  errors: { message: string } | undefined
-  [prop: string]: unknown
-}
+  errors?: { message?: string }
+  gridArea?: ResponsiveValue<string>
+} & InputProps
 
 const FormField = forwardRef<HTMLInputElement, FormFieldProps>((props, ref) => {
-  const { label, placeholder, type = 'text', gridArea, ...other } = props
-
-  let errorMessage
-  if (props.errors) {
-    errorMessage = props.errors.message
-  }
+  const { label, errors, gridArea, ...inputProps } = props
 
   return (
     <Box gridArea={gridArea}>
-      <Flex justify="space-between">
+      <Flex justify="space-between" align="center">
         <Box
           as="label"
           fontSize="0.75rem"
           fontWeight="bold"
-          htmlFor={label}
+          htmlFor={inputProps.id}
           display="inline-block"
           mb={2}
-          color={props['errors'] ? 'inputError' : 'black'}
+          color={errors ? 'inputError' : 'black'}
         >
           {label}
         </Box>
-        {props.errors && (
+        {errors?.message && (
           <Text aria-live="polite" color="inputError" fontSize="0.75rem" mb={2}>
-            {errorMessage}
+            {errors.message}
           </Text>
         )}
       </Flex>
       <Input
         ref={ref}
-        {...other}
-        type={type}
-        placeholder={placeholder}
         border="1px solid"
-        borderColor={props['errors'] ? 'inputError' : 'inputBorder'}
-        id={label}
+        borderColor={errors ? 'inputError' : 'inputBorder'}
+        {...inputProps}
       />
     </Box>
   )

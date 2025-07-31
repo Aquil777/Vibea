@@ -19,7 +19,7 @@ const ProductDescription = ({ product }: { product: Product }): JSX.Element => {
         cartImage: product.cartImage,
         price: product.price,
         quantity,
-      })
+      }),
     )
     toast({
       title: `Item '${product.name}' was added to cart`,

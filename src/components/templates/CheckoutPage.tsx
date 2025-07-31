@@ -6,7 +6,7 @@ const CheckoutPage = (): JSX.Element => {
   return (
     <Container maxW="container.lg" px={6} as="main" id="main">
       <GoBackLink />
-      <CheckoutForm />
+      <CheckoutForm label="Informacao de Checkout" />
     </Container>
   )
 }

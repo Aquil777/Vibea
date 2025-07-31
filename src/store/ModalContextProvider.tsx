@@ -1,4 +1,4 @@
-import { createContext, useEffect, useContext } from 'react'
+import { ReactNode, createContext, useEffect, useContext } from 'react'
 import { useDisclosure } from '@chakra-ui/react'
 
 type ContextProps = {
@@ -10,7 +10,7 @@ type ContextProps = {
   onCheckoutModalClose: () => void
 }
 
-const initialState = {
+const initialState: ContextProps = {
   isCartModalOpen: false,
   onCartModalOpen: () => undefined,
   onCartModalClose: () => undefined,
@@ -21,11 +21,13 @@ const initialState = {
 
 const ModalContext = createContext<ContextProps>(initialState)
 
-export const useModal = (): ContextProps => {
-  return useContext(ModalContext)
+export const useModal = (): ContextProps => useContext(ModalContext)
+
+type ModalProviderProps = {
+  children: ReactNode
 }
 
-const ModalContextProvider: React.FC = ({ children }): JSX.Element => {
+const ModalContextProvider = ({ children }: ModalProviderProps): JSX.Element => {
   const {
     isOpen: isCartModalOpen,
     onOpen: onCartModalOpen,
@@ -39,9 +41,8 @@ const ModalContextProvider: React.FC = ({ children }): JSX.Element => {
   } = useDisclosure()
 
   useEffect(() => {
-    isCartModalOpen || isCheckoutModalOpen
-      ? (document.body.style.overflowY = 'hidden')
-      : (document.body.style.overflowY = 'initial')
+    document.body.style.overflowY =
+      isCartModalOpen || isCheckoutModalOpen ? 'hidden' : 'initial'
   }, [isCartModalOpen, isCheckoutModalOpen])
 
   return (

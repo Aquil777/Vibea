@@ -48,10 +48,10 @@ const Footer = (): JSX.Element => {
           mt="3rem"
         >
           <Text variant="darkBackground" gridArea={{ sm: 'a' }}>
-            Vibea is an all in one stop to fulfill your audio needs.
-            We&apos;re a small team of music lovers and sound specialists who
-            are devoted to helping you get the most out of personal audio. Come
-            and visit our demo facility - we’re open 7 days a week.
+            Vibea is an all in one stop to fulfill your audio needs. We&apos;re
+            a small team of music lovers and sound specialists who are devoted
+            to helping you get the most out of personal audio. Come and visit
+            our demo facility - we’re open 7 days a week.
           </Text>
           <Text variant="darkBackground" gridArea={{ sm: 'b' }}>
             Copyright 2025. All Rights Reserved
